@@ -5,7 +5,7 @@ const AuthPage = ({ onLogin }) => {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
 
-  // Hardcoded credentials for demo purposes, sorted alphabetically by email
+  // Hardcoded credentials for demo purposes
   const users = [
     { email: 'admin@gmail.com', password: 'root@123' },
     { email: 'guest@example.com', password: 'guest123' },
@@ -16,7 +16,6 @@ const AuthPage = ({ onLogin }) => {
     e.preventDefault();
     setError('');
 
-    // Trim inputs and check if user exists
     const trimmedEmail = email.trim();
     const trimmedPassword = password.trim();
 
@@ -25,21 +24,25 @@ const AuthPage = ({ onLogin }) => {
     );
 
     if (validUser) {
-      console.log('Login successful');
-      onLogin(); // Call parent function to set authentication state
+      onLogin();
     } else {
-      console.log('Invalid credentials');
       setError('Invalid email or password');
     }
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="bg-white shadow-md rounded-lg p-8 w-full max-w-md">
-        <h2 className="text-2xl font-bold text-center text-gray-700">Login</h2>
-        {error && <p className="text-red-500 text-sm text-center">{error}</p>}
-        <form onSubmit={handleSubmit} className="mt-6">
-          <div className="mb-4">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500">
+      <div className="bg-white shadow-xl rounded-lg p-8 w-full max-w-md animate-fadeIn">
+        <h2 className="text-3xl font-bold text-center text-gray-800 animate-pulse">
+          Welcome Back!
+        </h2>
+        {error && (
+          <p className="text-red-500 text-sm text-center mt-2 animate-shake">
+            {error}
+          </p>
+        )}
+        <form onSubmit={handleSubmit} className="mt-6 space-y-6">
+          <div>
             <label
               htmlFor="email"
               className="block text-sm font-medium text-gray-600"
@@ -51,12 +54,12 @@ const AuthPage = ({ onLogin }) => {
               id="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+              className="mt-1 block w-full p-3 border border-gray-300 rounded-lg shadow focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition"
               placeholder="Enter your email"
               required
             />
           </div>
-          <div className="mb-4">
+          <div>
             <label
               htmlFor="password"
               className="block text-sm font-medium text-gray-600"
@@ -68,14 +71,14 @@ const AuthPage = ({ onLogin }) => {
               id="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+              className="mt-1 block w-full p-3 border border-gray-300 rounded-lg shadow focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition"
               placeholder="Enter your password"
               required
             />
           </div>
           <button
             type="submit"
-            className="w-full bg-blue-500 text-white p-2 rounded-md hover:bg-blue-600 transition-colors"
+            className="w-full bg-purple-600 text-white py-3 rounded-lg hover:bg-purple-700 transition-all shadow-lg transform hover:scale-105"
           >
             Login
           </button>
