@@ -10,7 +10,7 @@ const Navbar = () => {
 
   return (
     <nav className="bg-slate-800 text-white">
-      <div className="container mx-auto flex justify-around items-center px-4 py-4 h-16">
+      <div className="container mx-auto flex justify-between items-center px-4 py-4 h-16">
         {/* Logo */}
         <div className="logo font-bold text-white text-3xl">
           <span className="text-green-700">&lt;</span>Pass
@@ -21,6 +21,8 @@ const Navbar = () => {
         <button
           className="block md:hidden text-white focus:outline-none"
           onClick={toggleMenu}
+          aria-label="Toggle menu"
+          aria-expanded={isOpen}
         >
           <svg
             className="w-6 h-6"
@@ -40,9 +42,9 @@ const Navbar = () => {
 
         {/* Navigation Links */}
         <ul
-          className={`flex-col md:flex-row md:flex space-x-6 text-sm ${
+          className={`flex-col md:flex-row md:flex space-x-6 text-sm transition-transform duration-300 ease-in-out ${
             isOpen ? 'flex' : 'hidden'
-          } md:space-x-6 md:items-center`}
+          } md:space-x-6 md:items-center bg-slate-800 md:bg-transparent shadow-lg md:shadow-none text-center`}
         >
           <li>
             <NavLink
