@@ -20,17 +20,21 @@ function App() {
 
   return (
     <Router>
-      <Navbar />
+      {/* Conditionally render Navbar */}
+      {isAuthenticated && <Navbar />}
       <div className="min-h-[87vh]">
         <Routes>
           {/* Redirect to AuthPage if not authenticated */}
           {!isAuthenticated ? (
-            <Route path="*" element={<AuthPage onLogin={handleLogin} />} />
+            <>
+              <Route path="*" element={<Navigate to="/auth" />} />
+              <Route path="/auth" element={<AuthPage onLogin={handleLogin} />} />
+            </>
           ) : (
             <>
-              {/* Redirect to Manager by default */}
+              {/* Default to Manager */}
               <Route path="/" element={<Navigate to="/manager" />} />
-              
+
               {/* Manager Page with Logout Button */}
               <Route
                 path="/manager"
@@ -49,7 +53,7 @@ function App() {
 
               {/* Password Generator Page */}
               <Route path="/password-generator" element={<PasswordGenerator />} />
-              
+
               {/* Catch-all redirect to /manager */}
               <Route path="*" element={<Navigate to="/manager" />} />
             </>

@@ -43,7 +43,7 @@ const PasswordGenerator = () => {
     const colors = ['red', 'orange', 'yellow', 'lightgreen', 'green'];
 
     return (
-      <div className="mt-4">
+      <div className="mt-4 text-center">
         <p className="font-semibold text-gray-800">
           Strength: <span className={`text-${colors[strength.score]}-600`}>{levels[strength.score]}</span>
         </p>
@@ -54,7 +54,7 @@ const PasswordGenerator = () => {
           ></div>
         </div>
         {strength.feedback.suggestions.length > 0 && (
-          <ul className="mt-2 text-sm text-gray-600">
+          <ul className="mt-2 text-sm text-gray-600 text-left">
             {strength.feedback.suggestions.map((suggestion, index) => (
               <li key={index}>- {suggestion}</li>
             ))}
@@ -65,14 +65,16 @@ const PasswordGenerator = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-tr from-indigo-500 via-purple-500 to-pink-500">
-      <div className="bg-white rounded-lg shadow-lg p-8 max-w-lg w-full transform transition duration-300 hover:scale-105">
+    <div className="flex items-center justify-center min-h-screen bg-gradient-to-tr from-indigo-500 via-purple-500 to-pink-500 px-4">
+      <div className="bg-white rounded-lg shadow-lg p-8 max-w-md w-full sm:max-w-lg md:max-w-xl lg:max-w-2xl">
         <h1 className="text-3xl font-bold text-center text-gray-800 mb-6">Password Generator</h1>
 
         <div className="space-y-6">
           {/* Length Slider */}
           <div>
-            <label className="block text-gray-700 font-medium mb-2">Password Length: {length}</label>
+            <label className="block text-gray-700 font-medium mb-2 text-center">
+              Password Length: {length}
+            </label>
             <input
               type="range"
               min="8"
@@ -84,8 +86,8 @@ const PasswordGenerator = () => {
           </div>
 
           {/* Options */}
-          <div className="space-y-3">
-            <label className="flex items-center space-x-3">
+          <div className="space-y-3 text-center">
+            <label className="flex items-center justify-center space-x-3">
               <input
                 type="checkbox"
                 checked={includeUppercase}
@@ -94,7 +96,7 @@ const PasswordGenerator = () => {
               />
               <span className="text-gray-700">Include Uppercase</span>
             </label>
-            <label className="flex items-center space-x-3">
+            <label className="flex items-center justify-center space-x-3">
               <input
                 type="checkbox"
                 checked={includeNumbers}
@@ -103,7 +105,7 @@ const PasswordGenerator = () => {
               />
               <span className="text-gray-700">Include Numbers</span>
             </label>
-            <label className="flex items-center space-x-3">
+            <label className="flex items-center justify-center space-x-3">
               <input
                 type="checkbox"
                 checked={includeSpecial}
@@ -125,7 +127,7 @@ const PasswordGenerator = () => {
 
         {/* Display Password */}
         {password && (
-          <div className="mt-6">
+          <div className="mt-6 text-center">
             <input
               type="text"
               value={password}

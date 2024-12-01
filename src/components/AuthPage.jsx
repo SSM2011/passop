@@ -34,7 +34,7 @@ const AuthPage = ({ onLogin }) => {
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500">
       <div className="bg-white shadow-xl rounded-lg p-8 w-full max-w-md animate-fadeIn">
         <h2 className="text-3xl font-bold text-center text-gray-800 animate-pulse">
-          Welcome Back!
+          Welcome To PassOP!
         </h2>
         {error && (
           <p className="text-red-500 text-sm text-center mt-2 animate-shake">
